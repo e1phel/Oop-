@@ -31,6 +31,7 @@ public:
 	}
 	~Employee(){}
 };
+ofstream Employee::records;
 int main()
 {
 	Employee e[3];

@@ -1,3 +1,6 @@
 
- Name : Ali	 ID : 4889	 Salary : 120000
-00
+ Name : Hasanat	 ID : 45500	 Salary : 550000
+
+ Name : Ibrahim	 ID : 67790	 Salary : 450000
+
+ Name : Ali	 ID : 456690	 Salary : 120000
