@@ -9,13 +9,7 @@ class student
 	string* marks = new string[n];
 
 public:
-	student() 
-	{
-		id = 0; 
-		n = 0;  
-		subjects = nullptr;  
-		marks = nullptr;
-	}
+	student(): id(0),n(0),subjects(nullptr),marks(nullptr){}
 	void input()
 	{
 		cout << "\n================ Portal ===============";
