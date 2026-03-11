@@ -69,12 +69,12 @@ public:
 				{
 					if (id == ids[i])
 					{
+						exit = true;
 						cout << "\n============  Staff Member Results  ======================";
 						cout << "\n== Name : " << names[i] << " ==============================";
 						cout << "\n== ID : " << ids[i] << " ==================================";
 						cout << "\n== Salary : " << salaries[i] << " =========================";
 						cout << "\n==========================================================="<<endl;
-						exit = true;
 					}
 					else
 					{
@@ -117,7 +117,6 @@ void menu()
 		else if (ans == 'c' || ans == 'C')
 		{
 			s.search();
-			
 		}
 		else
 		{
