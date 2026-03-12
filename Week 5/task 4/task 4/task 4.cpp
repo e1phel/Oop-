@@ -28,13 +28,16 @@ public:
 			cin >> salaries[i];
 			cout << "\n==============================================================="<<endl;
 		}
+		system("cls");
 	}
 	void output()
 	{
 		if (ids == nullptr)
 		{
 			cout << "\n====== Enter Details Before Displaying ============================" << endl;
-	    menu();	
+			Sleep(1500);
+			system("cls");
+	        return;	
 		}
 		else
 		{
@@ -57,18 +60,22 @@ public:
 		if (ids == nullptr)
 		{
 			cout << "\n====== Enter Details Before Searching ============================" << endl;
-			menu();
+			Sleep(1500);
+			system("cls");
+			return;
 		}
         else
 		{
 		cout << "\n============ Enter Staff Member's ID :\t";
 		cin >> id;
+		bool found = false;
 			while (exit == false)
 			{
 				for (int i = 0; i < n; i++)
 				{
 					if ( id == ids[i])
 					{
+						found = true;
 						exit = true;
 						cout << "\n============  Staff Member Results  ======================";
 						cout << "\n== Name : " << names[i] << " ==============================";
@@ -77,10 +84,11 @@ public:
 						cout << "\n==========================================================="<<endl;
 						break;
 					}
-					else
+					if(!found)
 					{
 						cout << "\n======== ID YOU ENTERED WAS INCORRECT !!!!, Please Retry :\t";
 						cin >> id;
+						system("cls");
 						exit = false;
 					}
 				}
@@ -94,10 +102,9 @@ public:
 		delete[]salaries;
 	}
 };
-void menu()
+void menu(staff a)
 {
 	char ans;
-	staff s;
 	bool stop = false;
 	while (stop == false)
 	{
@@ -107,27 +114,32 @@ void menu()
 		cin >> ans;
 		if (ans == 'a' || ans == 'A')
 		{
-			s.input();
+			system("cls");
+			a.input();
 			
 		}
 		else if (ans == 'b' || ans == 'B')
 		{
-			s.output();
+			system("cls");
+			a.output();
 			
 		}
 		else if (ans == 'c' || ans == 'C')
 		{
-			s.search();
+			system("cls");
+			a.search();
 		}
 		else
 		{
 			cout << "\n=============== Please Enter a Valid Input :\t";
 			cin >> ans;
+			system("cls");
 			stop = false;
 		}
 	}
 }
 int main()
 {
-	menu();
+	staff s;
+	menu(s);
 }
