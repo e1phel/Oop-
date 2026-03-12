@@ -67,7 +67,7 @@ public:
 			{
 				for (int i = 0; i < n; i++)
 				{
-					if (id=ids[i])
+					if ( id == ids[i])
 					{
 						exit = true;
 						cout << "\n============  Staff Member Results  ======================";
@@ -75,6 +75,7 @@ public:
 						cout << "\n== ID : " << ids[i] << " ==================================";
 						cout << "\n== Salary : " << salaries[i] << " =========================";
 						cout << "\n==========================================================="<<endl;
+						break;
 					}
 					else
 					{
