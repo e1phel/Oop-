@@ -1,5 +1,7 @@
 #include<iostream>
 #include<windows.h>
+#include<fstream>
+#include<conio.h>
 using namespace std;
 
 void menu();
@@ -9,6 +11,7 @@ class staff
 	int* ids = nullptr;
 	int* salaries = nullptr;
 	string* names = nullptr;
+	static ofstream data;
 public:
 	void input()
 	{
@@ -35,7 +38,7 @@ public:
 		if (ids == nullptr)
 		{
 			cout << "\n====== Enter Details Before Displaying ============================" << endl;
-			Sleep(1500);
+			Sleep(500);
 			system("cls");
 	        return;	
 		}
@@ -60,9 +63,10 @@ public:
 		if (ids == nullptr)
 		{
 			cout << "\n====== Enter Details Before Searching ============================" << endl;
-			Sleep(1500);
+			Sleep(900);
 			system("cls");
 			return;
+		
 		}
         else
 		{
@@ -84,15 +88,52 @@ public:
 						cout << "\n==========================================================="<<endl;
 						break;
 					}
-					if(!found)
-					{
-						cout << "\n======== ID YOU ENTERED WAS INCORRECT !!!!, Please Retry :\t";
-						cin >> id;
-						system("cls");
-						exit = false;
-					}
+				}
+				if (!found)
+				{
+					cout << "\n======== ID YOU ENTERED WAS INCORRECT !!!!, Please Retry :\t";
+					cin >> id;
+					system("cls");
+					exit = false;
 				}
 			}
+		}
+	}
+	static void file_open()
+	{
+		data.open("data.txt");
+	
+	}
+	void data_insert()
+	{
+		data << "\n==================== Details =================================";
+		for (int i = 0; i < n; i++)
+		{
+			data << "\n============ Staff Member "<< i + 1 << " =================";
+			data << "\n== Name : " << names[i] ;
+			data << "\n== ID : " << ids[i] ;
+			data << "\n== Salary : " << salaries[i] ;
+			data << "\n===========================================================" << endl;
+		}
+	}
+	static void file_close()
+	{
+		data.close();
+	}
+	void save()
+	{
+		if (ids == nullptr)
+		{
+			cout << "\n====== Enter Details Before Displaying ============================" << endl;
+			Sleep(1500);
+			system("cls");
+			return;
+		}
+		else
+		{
+			file_open();
+			data_insert();
+			file_close();
 		}
 	}
 	~staff()
@@ -102,16 +143,18 @@ public:
 		delete[]salaries;
 	}
 };
-void menu(staff a)
+ofstream staff::data;
+void menu(staff&a)
 {
 	char ans;
 	bool stop = false;
 	while (stop == false)
 	{
-		cout << "\n======================== Welcome To Staff Portal ====================================";
-		cout << "\n=========================== Select an Option ========================================";
-		cout << "\n== (A) Add Staff Details == (B) Display Staff Details == (C) Look Up a Staff Member =" << endl;
-		cin >> ans;
+		cout << "\n============================================== Welcome To Staff Portal ===================================================";
+		cout << "\n================================================= Select an Option =======================================================";
+		cout << "\n== (A) Add Staff Details == (B) Display Staff Details == (C) Look Up a Staff Member ====== (D) Save Data to a File =======" << endl;
+		ans = _getch();
+		char ent;
 		if (ans == 'a' || ans == 'A')
 		{
 			system("cls");
@@ -122,12 +165,32 @@ void menu(staff a)
 		{
 			system("cls");
 			a.output();
-			
+			cout << "\n\n========================= Press Enter to Continue....."<<endl;
+			ent = _getch();
+			if (ent == 13)
+			{
+				system("cls");
+				continue;
+				
+			}	
 		}
 		else if (ans == 'c' || ans == 'C')
 		{
 			system("cls");
 			a.search();
+		}
+		else if (ans == 'd' || ans == 'D')
+		{
+			system("cls");
+			cout << "\n======================= Data Saved to the File ";
+			a.save();
+			Sleep(500);
+		}
+		else if (ans == 27)
+		{
+			system("cls");
+			cout << "\n Press again to Exit" << endl;
+			exit(0);
 		}
 		else
 		{
