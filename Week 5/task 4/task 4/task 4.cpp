@@ -124,8 +124,8 @@ public:
 	{
 		if (ids == nullptr)
 		{
-			cout << "\n====== Enter Details Before Displaying ============================" << endl;
-			Sleep(1500);
+			cout << "\n====== Enter Details Before Saving ============================" << endl;
+			Sleep(700);
 			system("cls");
 			return;
 		}
@@ -134,6 +134,9 @@ public:
 			file_open();
 			data_insert();
 			file_close();
+			cout << "\n======================= Data Saved to the File ";
+			Sleep(500);
+			system("cls");
 		}
 	}
 	~staff()
@@ -182,9 +185,8 @@ void menu(staff&a)
 		else if (ans == 'd' || ans == 'D')
 		{
 			system("cls");
-			cout << "\n======================= Data Saved to the File ";
 			a.save();
-			Sleep(500);
+			
 		}
 		else if (ans == 27)
 		{
