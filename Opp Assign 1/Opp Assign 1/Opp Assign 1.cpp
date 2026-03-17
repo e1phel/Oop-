@@ -214,8 +214,8 @@ int main()
 	char pick;
 	character c;
 	cout << "\n=========================  Character Creation  =========================";
-	cout << "\n=========================     Pick a Class     =========================";
 	c.create_acc();
+	cout << "\n=========================     Pick a Class     =========================";
 	cout << "\n========== Vagabond ============= Scholar ============= Ironeye ========";
 	cout << "\n==========     A    =============    B    =============    C    ========"<<endl;
 	cin >> pick;
@@ -241,5 +241,8 @@ int main()
 	{
 		cout << "\n Invalid Input !";
 	}
+	char ans;
+	cout << "\n Would you Like to Duplicate this Character";
+	cin >> ans;
 	return 0;
 }
