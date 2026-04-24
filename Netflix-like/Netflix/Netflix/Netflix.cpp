@@ -67,13 +67,23 @@ public:
 		{
 			while (quit == false)
 			{
-				cin >> choice;
-				history[watched] = choice;
-				watched++;
-				move = _getch();
-				if (move == 27)
+				for (int i = 0; i < 10; i++)
 				{
-					quit = true;
+					cout << "\n==== Film Name";
+					cin >> choice;
+					history[watched] = choice;
+					watched++;
+					cout << "\n=== Press E to Continue or Esc to Move back";
+					move = _getch();
+					if (move == 27)
+					{
+						quit = true;
+						break;
+					}
+					else if (move == 'e')
+					{
+						continue;
+					}
 				}
 			}
 		}
@@ -146,11 +156,12 @@ public:
 			cout << "\n============ Create a Profile ===============";
 			acc();
 			bool quit = false;
+			char c;
 			while (quit == false)
 			{
 				cout << "\n================ Home ===================";
-				cout << "\n=(a) History == (b) New Profile =(f) Load Fyp = (Esc) Exit=";
-				char c = _getch();
+				cout << "\n=(a) History == (b) New Profile =(f) Load Fyp = (Esc) Exit="<<endl;
+				cin >> c;
 				if (c == 'a')
 				{
 					p[counter].disp_history();
